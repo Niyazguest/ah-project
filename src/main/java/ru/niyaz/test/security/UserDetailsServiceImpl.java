@@ -20,7 +20,6 @@ import java.util.List;
  * Created by user on 06.09.15.
  */
 
-@Service("userDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
@@ -32,7 +31,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         User user = userDao.getUser(username);
         if (user == null)
             throw new UsernameNotFoundException("Login error");
-        UserDetailsImpl userDetails = new UserDetailsImpl(user.getUserId(), user.getName(), user.getLogin(), user.getPassword(), list);
+        UserDetailsImpl userDetails = new UserDetailsImpl(user.getId(), user.getName(), user.getLogin(), user.getPassword(), list);
         userDetails.setCurrentUser(user);
         return userDetails;
     }

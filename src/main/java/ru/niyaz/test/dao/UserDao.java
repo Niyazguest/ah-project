@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.niyaz.test.entity.User;
 import ru.niyaz.test.util.HibernateUtil;
 
+import java.util.List;
+
 /**
  * Created by user on 04.09.15.
  */
@@ -20,11 +22,11 @@ public class UserDao {
     @Autowired
     private SessionFactory sessionFactory;
 
- //   @Transactional(propagation = Propagation.MANDATORY)
+    @Transactional(propagation = Propagation.REQUIRED)
     public Long saveUser(User user) {
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(user);
-        return user.getUserId();
+        return user.getId();
     }
 
     public boolean isExist(String login) {
@@ -59,6 +61,22 @@ public class UserDao {
                 session.close();
         }
         return user;
+    }
+
+    public List<User> getUsersByPlace(String placeID) {
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            Criteria userCriteria = session.createCriteria(User.class);
+            userCriteria.add(Restrictions.eq("currentPlaceId", placeID));
+            List<User> users = userCriteria.list();
+            return users;
+        } catch (HibernateException ex) {
+            return null;
+        } finally {
+            if (session != null)
+                session.close();
+        }
     }
 
 }

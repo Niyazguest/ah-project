@@ -1,3 +1,4 @@
+<!--
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -8,14 +9,7 @@
        http://www.springframework.org/schema/security/spring-security.xsd">
 
     <security:http create-session="ifRequired" auto-config="true" use-expressions="true">
-        <security:intercept-url pattern="/saveTask" access="hasRole('ROLE_USER')"/>
-        <security:intercept-url pattern="/deleteTask" access="hasRole('ROLE_USER')"/>
-        <security:intercept-url pattern="/myTasks" access="hasRole('ROLE_USER')"/>
-        <security:intercept-url pattern="/getTypes" access="hasRole('ROLE_USER')"/>
-        <security:intercept-url pattern="/getPriorities" access="hasRole('ROLE_USER')"/>
-        <security:intercept-url pattern="/tasks.jsp" access="hasRole('ROLE_USER')"/>
-
-        <security:form-login login-page="/login" default-target-url="/myTasks"
+        <security:form-login login-page="/login" default-target-url="/myPage"
                              authentication-failure-url="/login?error=true"
                              always-use-default-target="true"
                              username-parameter="j_username"
@@ -23,6 +17,7 @@
 
         <security:anonymous username="guest" granted-authority="ROLE_ANONYMOUS"/>
         <security:logout logout-url="/logout" logout-success-url="/login" delete-cookies="JSESSIONID"/>
+        <security:csrf disabled="true"/>
 
     </security:http>
 
@@ -32,3 +27,4 @@
     </security:authentication-manager>
 
 </beans>
+-->

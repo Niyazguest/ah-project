@@ -14,7 +14,7 @@
         <input type="text" class="form-control" placeholder="Имя" name="name" th:required="${true}" th:autofocus="${true}"/>
         <input type="text" class="form-control" placeholder="Логин" name="login" th:required="${true}"/>
         <input type="password" class="form-control" placeholder="Пароль" name="password" th:required="${true}"/>
-        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+        <input type="text" class="form-control" placeholder="ID страницы ВК" name="vk-page" th:required="${true}"/>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Регистрация</button>
     </form>
 </div>

@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class IndexController {
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public void loginPage(HttpServletRequest request, HttpServletResponse response) {
         try {
             response.setContentType("text/html;charset=UTF-8");

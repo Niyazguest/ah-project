@@ -11,25 +11,45 @@ import java.util.Set;
 @Entity
 @Table(name = "user", schema = "public")
 public class User {
-    private Long userId;
-    private String name;
-    private String login;
-    private String password;
-    private Integer role;
 
     @Id
-    @SequenceGenerator(name = "user_seq", sequenceName = "user_user_id_seq", allocationSize = 0)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
-    @Column(name = "user_id")
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
+    @SequenceGenerator(name = "user_seq", sequenceName = "user_id_seq", allocationSize = 0)
+    @Column(name = "id")
+    private Long id;
 
     @Column(name = "name")
+    private String name;
+
+    @Column(name = "login")
+    private String login;
+
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "role")
+    private Integer role;
+
+    @Column(name = "vk_page")
+    private String vkPage;
+
+    @Column(name = "current_place_id")
+    private String currentPlaceId;
+
+    @Column(name = "want")
+    private Boolean want;
+
+    @Column(name = "active")
+    private Boolean active;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -38,7 +58,6 @@ public class User {
         this.name = name;
     }
 
-    @Column(name = "login")
     public String getLogin() {
         return login;
     }
@@ -47,7 +66,6 @@ public class User {
         this.login = login;
     }
 
-    @Column(name = "password")
     public String getPassword() {
         return password;
     }
@@ -56,7 +74,6 @@ public class User {
         this.password = password;
     }
 
-    @Column(name = "role")
     public Integer getRole() {
         return role;
     }
@@ -64,4 +81,37 @@ public class User {
     public void setRole(Integer role) {
         this.role = role;
     }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public Boolean getWant() {
+        return want;
+    }
+
+    public void setWant(Boolean want) {
+        this.want = want;
+    }
+
+    public String getCurrentPlaceId() {
+        return currentPlaceId;
+    }
+
+    public void setCurrentPlaceId(String currentPlaceId) {
+        this.currentPlaceId = currentPlaceId;
+    }
+
+    public String getVkPage() {
+        return vkPage;
+    }
+
+    public void setVkPage(String vkPage) {
+        this.vkPage = vkPage;
+    }
+
 }

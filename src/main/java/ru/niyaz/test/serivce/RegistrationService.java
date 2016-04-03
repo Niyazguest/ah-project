@@ -20,13 +20,16 @@ public class RegistrationService {
     private UserDao userDao;
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public Long userRegistration(String name, String login, String password) {
+    public Long userRegistration(String name, String login, String password, String vkPage) {
         if (!userDao.isExist(login)) {
             User user = new User();
             user.setName(name);
             user.setLogin(login);
             user.setPassword(password);
             user.setRole(0);
+            user.setVkPage(vkPage);
+            user.setActive(true);
+            user.setWant(false);
             return userDao.saveUser(user);
         } else {
             return 0L;
